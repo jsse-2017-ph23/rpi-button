@@ -16,9 +16,9 @@ Install Node.JS first. Follow [instruction from official website](https://nodejs
 
 Node 8 and above is recommended. At least Node 6 (Not guaranteed) is required.
 
-After that, run the following scripts
+After that, run the following scripts (omit `production` flag if your are running in development environment)
 ```bash
-npm install
+npm install --production
 ```
 
 ## Execution
