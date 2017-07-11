@@ -1,4 +1,6 @@
 # rpi-button
+[![Travis](https://img.shields.io/travis/jsse-2017-ph23/rpi-button.svg?style=flat-square)](https://travis-ci.org/jsse-2017-ph23/rpi-button)
+
 Detect button press in RPi and respond in firebase
 
 __WARNING__: This script is designed to run on _ARM_ architecture. x64 computer will not able to run this script.
