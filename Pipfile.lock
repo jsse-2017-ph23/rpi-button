@@ -1,0 +1,56 @@
+{
+    "_meta": {
+        "hash": {
+            "sha256": "9513a835612cd9e1f1d9fab5d739e196c9f4eed5a90686915a0a22d86f2a375c"
+        },
+        "requires": {},
+        "sources": [
+            {
+                "url": "https://pypi.python.org/simple",
+                "verify_ssl": true
+            }
+        ]
+    },
+    "default": {
+        "cachetools": {
+            "version": "==2.0.0"
+        },
+        "certifi": {
+            "version": "==2017.4.17"
+        },
+        "chardet": {
+            "version": "==3.0.4"
+        },
+        "firebase-admin": {
+            "version": "==2.1.0"
+        },
+        "google-auth": {
+            "version": "==1.0.1"
+        },
+        "idna": {
+            "version": "==2.5"
+        },
+        "pyasn1": {
+            "version": "==0.2.3"
+        },
+        "pyasn1-modules": {
+            "version": "==0.0.9"
+        },
+        "requests": {
+            "version": "==2.18.1"
+        },
+        "rpi.gpio": {
+            "version": "==0.6.3"
+        },
+        "rsa": {
+            "version": "==3.4.2"
+        },
+        "six": {
+            "version": "==1.10.0"
+        },
+        "urllib3": {
+            "version": "==1.21.1"
+        }
+    },
+    "develop": {}
+}

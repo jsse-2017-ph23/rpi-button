@@ -1,6 +1,4 @@
 # rpi-button
-[![Travis](https://img.shields.io/travis/jsse-2017-ph23/rpi-button.svg?style=flat-square)](https://travis-ci.org/jsse-2017-ph23/rpi-button)
-
 Detect button press in RPi and respond in firebase
 
 __WARNING__: This script is designed to run on _ARM_ architecture. x64 computer will not able to run this script.
@@ -14,17 +12,17 @@ Follow [instruction from Firebase](https://firebase.google.com/docs/admin/setup)
 Set _CONTENT_ of the JSON file to environment variable `$FIREBASE_SERVICE_KEY`
 
 ## Install dependencies
-Install Node.JS first. Follow [instruction from official website](https://nodejs.org/en/download/package-manager/#debian-and-ubuntu-based-linux-distributions).
-
-Node 8 and above is recommended. At least Node 6 (Not guaranteed) is required.
-
-After that, run the following scripts (omit `production` flag if your are running in development environment)
+Run the following commands:
 ```bash
-npm install --production
+sudo apt-get update # Update package database
+sudo apt-get install python3 python3-pip # Install python interpolator
+sudo pip3 install setuptools # Install python dependency
+sudo pip3 install pipenv # Install pipenv, package management for python
+pipenv --three install --dev # Install local dependencies
 ```
 
 ## Execution
 __Remember to set Firebase service key first__
 ```bash
-npm start
+pipenv run python main.py
 ```
