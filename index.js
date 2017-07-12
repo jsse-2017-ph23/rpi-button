@@ -4,17 +4,25 @@ const admin = require('firebase-admin')
 const FB_UID = 'worker-rpi'
 const MAIL_COUNT_PATH = '/mailCount'
 const GPIO_PIN = 18
-const SERVICE_ACCOUNT = JSON.parse(process.env.FIREBASE_SERVICE_KEY)
+const FIREBASE_CREDENTIAL_KEY = 'FIREBASE_SERVICE_KEY'
 
 console.log('Initializing Firebase admin')
-// Initialization
-admin.initializeApp({
-  credential: admin.credential.cert(SERVICE_ACCOUNT),
-  databaseURL: 'https://jsse-2017.firebaseio.com',
-  databaseAuthVariableOverride: {
-    uid: FB_UID
+const firebaseKeyRaw = process.env[FIREBASE_CREDENTIAL_KEY]
+try {
+  const parsedFirebaseKey = JSON.parse(firebaseKeyRaw)
+  admin.initializeApp({
+    credential: admin.credential.cert(parsedFirebaseKey),
+    databaseURL: 'https://jsse-2017.firebaseio.com',
+    databaseAuthVariableOverride: {
+      uid: FB_UID
+    }
+  })
+} catch (err) {
+  if (err instanceof SyntaxError) {
+    console.error(`Invalid JSON file in ${FIREBASE_CREDENTIAL_KEY}. Or you have not set it?`)
   }
-})
+  throw err
+}
 
 console.log('Initializing button GPIO')
 const button = new Gpio(GPIO_PIN, 'in', 'both')
