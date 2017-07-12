@@ -30,6 +30,7 @@ const button = new Gpio(GPIO_PIN, 'in', 'both')
 // Set up clean up first
 process.on('SIGINT', () => {
   button.unexport()
+  console.log('Cleanup completed')
 })
 
 console.log('Initialization completed')
