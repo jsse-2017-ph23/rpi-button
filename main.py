@@ -22,6 +22,9 @@ logger = logging.getLogger('Root')
 
 
 class ENVCredntial(Base):
+
+    _CREDENTIAL_TYPE = 'service_account'
+
     def __init__(self):
         env = os.getenv(FIREBASE_CREDENTIAL_KEY)
         if env is None:
