@@ -26,6 +26,7 @@ class Update(threading.Thread):
             button_num = 0
         logger.debug('Setting value to %s', new_value)
         ref.set(new_value)
+        logger.debug('Set completed')
 
 
 def main_loop():
