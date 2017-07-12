@@ -9,7 +9,7 @@ Connect the switch to GPIO 18 and Ground. (Chart [here](http://www.mediafire.com
 ## Set up service account
 Follow [instruction from Firebase](https://firebase.google.com/docs/admin/setup) and get the service account information.
 
-Set _CONTENT_ of the JSON file to environment variable `$FIREBASE_SERVICE_KEY`
+Then, save the file to `~/firebase-adminsdk.json`.
 
 ## Install dependencies
 Run the following commands:
