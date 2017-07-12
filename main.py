@@ -1,15 +1,10 @@
-import json
-import os
-
 import firebase_admin
 import logging
 
 import RPi.GPIO as GPIO
 from firebase_admin import credentials
-from google.oauth2 import service_account
-from firebase_admin.credentials import _scopes, Base
 
-from button.constants import FIREBASE_CREDENTIAL_KEY, GPIO_PIN, FB_UID, FB_DB_URL, FIREBASE_CREDENTIAL_PATH
+from button.constants import GPIO_PIN, FB_UID, FB_DB_URL, FIREBASE_CREDENTIAL_PATH
 from button.handlers import main_loop
 
 
