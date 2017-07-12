@@ -60,4 +60,8 @@ def main():
     main_loop()
 
 if __name__ == '__main__':
-    main()
+    try:
+        main()
+    except:
+        GPIO.cleanup()
+
