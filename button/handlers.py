@@ -1,49 +1,33 @@
 import threading
 from time import sleep
-
-import RPi.GPIO as GPIO
 import logging
 
+import RPi.GPIO as GPIO
 from firebase_admin import db
 
-from .constants import BUTTON_GPIO_PIN, MAIL_COUNT_PATH
+from .constants import BUTTON_GPIO_PIN, HAVE_MAIL_PATH, UPDATE_INTERVAL
 
-button_num = 0
-button_num_lock = threading.Lock()
 logger = logging.getLogger('Handlers')
 
 
-class Update(threading.Thread):
-    def run(self):
-        # Because Firebase python do not have transaction
-        global button_num
-
-        ref = db.reference(MAIL_COUNT_PATH)
-        value = ref.get()
-        logger.debug('Got old value. Value: %s', value)
-        with button_num_lock:
-            new_value = value + button_num
-            button_num = 0
-        logger.debug('Setting value to %s', new_value)
-        ref.set(new_value)
-        logger.debug('Set completed')
+def update(have_mail: bool):
+    ref = db.reference(HAVE_MAIL_PATH)
+    logger.debug('Setting have mail to value: %s', have_mail)
+    ref.set(have_mail)
+    logger.debug('Setting have mail succeed. Current value: %s', have_mail)
 
 
 def main_loop():
-    global button_num
     button_pressed = not GPIO.input(BUTTON_GPIO_PIN)
     logger.debug('Initial input state: %s', button_pressed)
+    threading.Thread(target=update, args=(button_pressed,))  # Initial update
+
     while True:
-        sleep(0.2)
+        sleep(UPDATE_INTERVAL)
         new_button_pressed = not GPIO.input(BUTTON_GPIO_PIN)
 
         if button_pressed and not new_button_pressed:
-            logger.debug('Press released.')
-            with button_num_lock:
-                button_num += 1
-            if button_num == 1:  # Thread not started. Start update process.
-                logger.debug('Update thread not started. Starting the thread')
-                thread = Update()
-                thread.start()
+            logger.debug('Button status changed. From %s to %s', button_pressed, new_button_pressed)
+            threading.Thread(target=update, args=(new_button_pressed,))
 
         button_pressed = new_button_pressed
