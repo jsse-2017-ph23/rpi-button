@@ -6,7 +6,7 @@ import logging
 
 from firebase_admin import db
 
-from .constants import GPIO_PIN, MAIL_COUNT_PATH
+from .constants import BUTTON_GPIO_PIN, MAIL_COUNT_PATH
 
 button_num = 0
 button_num_lock = threading.Lock()
@@ -31,11 +31,11 @@ class Update(threading.Thread):
 
 def main_loop():
     global button_num
-    button_pressed = not GPIO.input(GPIO_PIN)
+    button_pressed = not GPIO.input(BUTTON_GPIO_PIN)
     logger.debug('Initial input state: %s', button_pressed)
     while True:
         sleep(0.2)
-        new_button_pressed = not GPIO.input(GPIO_PIN)
+        new_button_pressed = not GPIO.input(BUTTON_GPIO_PIN)
 
         if button_pressed and not new_button_pressed:
             logger.debug('Press released.')

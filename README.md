@@ -4,7 +4,7 @@ Detect button press in RPi and respond in firebase
 __WARNING__: This script is designed to run on _ARM_ architecture. x64 computer will not able to run this script.
 
 ## Set up GPIO port
-Connect the switch to GPIO 18 and Ground. (Chart [here](http://www.mediafire.com/download/dp0sbulael9ns2a/Raspberry_Pi_GPIO_Pintout_diagram_v2.pdf))
+Connect the switch to GPIO 12 and Ground. (Chart [here](http://www.mediafire.com/download/dp0sbulael9ns2a/Raspberry_Pi_GPIO_Pintout_diagram_v2.pdf))
 
 ## Set up service account
 Follow [instruction from Firebase](https://firebase.google.com/docs/admin/setup) and get the service account information.
