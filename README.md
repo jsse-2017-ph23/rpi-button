@@ -15,7 +15,7 @@ Then, save the file to `~/firebase-adminsdk.json`.
 Run the following commands:
 ```bash
 sudo apt-get update # Update package database
-sudo apt-get install python3 python3-pip # Install python interpolator
+sudo apt-get install python3 python3-pip # Install python compiler/interpreter
 sudo pip3 install setuptools # Install python dependency
 sudo pip3 install pipenv # Install pipenv, package management for python
 pipenv --three install --dev # Install local dependencies
