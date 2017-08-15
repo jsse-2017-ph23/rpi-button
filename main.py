@@ -4,9 +4,8 @@ import logging
 import RPi.GPIO as GPIO
 from firebase_admin import credentials
 
-from button.constants import BUTTON_GPIO_PIN, FB_UID, FB_DB_URL, FIREBASE_CREDENTIAL_PATH
-from button.handlers import main_loop
-
+from button.constants import FB_UID, FB_DB_URL, FIREBASE_CREDENTIAL_PATH, DIST_TRIG_PIN, DIST_ECHO_PIN
+from button.distance import loop_distance_sensor
 
 # Set up logging
 logging.basicConfig(
@@ -14,7 +13,7 @@ logging.basicConfig(
     datefmt='%H:%M:%S',
     level=logging.DEBUG
 )
-logger = logging.getLogger('Root')
+logger = logging.getLogger('rpi-button')
 
 
 def main():
@@ -30,16 +29,19 @@ def main():
     logger.debug('Firebase initialized')
 
     GPIO.setmode(GPIO.BCM)
-    GPIO.setup(BUTTON_GPIO_PIN, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+
+    # Distance sensor setup
+    GPIO.setup(DIST_TRIG_PIN, GPIO.OUT)
+    GPIO.setup(DIST_ECHO_PIN, GPIO.IN)
+
     logger.debug('GPIO setup completed')
 
     logger.info('Initialization completed. Entering loop')
-    main_loop()
+    loop_distance_sensor()
 
 if __name__ == '__main__':
     try:
         main()
-    except:
+    finally:
         GPIO.cleanup()
-        raise
 

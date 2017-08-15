@@ -1,10 +1,13 @@
 # rpi-button
-Detect button press in RPi and respond in firebase
+Detect mail existence in RPi and respond in firebase
+
+Because of laziness, the package name show button. But it in fact requires
+distance sensor to complete the task.
 
 __WARNING__: This script is designed to run on _ARM_ architecture. x64 computer will not able to run this script.
 
 ## Set up GPIO port
-Connect the switch to GPIO 12 and Ground. (Chart [here](http://www.mediafire.com/download/dp0sbulael9ns2a/Raspberry_Pi_GPIO_Pintout_diagram_v2.pdf))
+Set up distance sensor according to [this tutorial](https://www.modmypi.com/blog/hc-sr04-ultrasonic-range-sensor-on-the-raspberry-pi). Follow GPIO pins in that tutorial.
 
 ## Set up service account
 Follow [instruction from Firebase](https://firebase.google.com/docs/admin/setup) and get the service account information.
