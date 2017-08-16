@@ -4,7 +4,7 @@ import logging
 from RPi import GPIO
 
 from button.constants import DIST_TRIG_PIN, DIST_ECHO_PIN, DIST_THRESHOLD, UPDATE_INTERVAL
-from button.dbupdate import DBUpdate
+from button.dbupdate import update_have_mail
 
 logger = logging.getLogger('rpi-button distance sensor')
 
@@ -50,8 +50,7 @@ def loop_distance_sensor():
 
     # Initial update
     mail = have_mail()
-    update_thread = DBUpdate()
-    update_thread.add_task(mail)
+    update_have_mail(mail)
 
     while True:
         time.sleep(UPDATE_INTERVAL)
@@ -59,6 +58,6 @@ def loop_distance_sensor():
 
         if mail != new_mail:
             logger.info('Mail status changed. From %s to %s', mail, new_mail)
-            update_thread.add_task(mail)
+            update_have_mail(mail)
 
         mail = new_mail
