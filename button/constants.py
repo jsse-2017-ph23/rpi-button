@@ -4,7 +4,8 @@ import os
 UPDATE_INTERVAL = 5  # Time between each detect, in seconds
 DIST_TRIG_PIN = 23
 DIST_ECHO_PIN = 24
-DIST_THRESHOLD = 5  # If lower than this distance, mail exist. In cm
+DIST_THRESHOLD = 8  # If lower than this distance, mail exist. In cm
+DIST_ERR_THRESHOLD = 1000  # If result is larger than this, assume result is error and mail does exist (in cm)
 
 # Firebase constants
 FB_UID = 'worker-rpi'

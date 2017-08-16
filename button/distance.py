@@ -3,7 +3,7 @@ import logging
 
 from RPi import GPIO
 
-from button.constants import DIST_TRIG_PIN, DIST_ECHO_PIN, DIST_THRESHOLD, UPDATE_INTERVAL
+from button.constants import DIST_TRIG_PIN, DIST_ECHO_PIN, DIST_THRESHOLD, UPDATE_INTERVAL, DIST_ERR_THRESHOLD
 from button.dbupdate import update_have_mail
 
 logger = logging.getLogger('rpi-button distance sensor')
@@ -16,7 +16,6 @@ def measure_distance() -> float:
     time.sleep(0.00001)
     GPIO.output(DIST_TRIG_PIN, False)
 
-    pulse_start = time.time()
     while GPIO.input(DIST_ECHO_PIN) == 0:
         # Set the variable to the time when echo pin is 1
         pulse_start = time.time()
@@ -36,7 +35,7 @@ def measure_distance() -> float:
 
 def have_mail() -> bool:
     s = measure_distance()
-    return s >= DIST_THRESHOLD
+    return s > DIST_ERR_THRESHOLD or s >= DIST_THRESHOLD
 
 
 def loop_distance_sensor():
