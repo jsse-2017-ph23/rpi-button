@@ -61,6 +61,6 @@ def loop_distance_sensor():
 
         if mail != new_mail:
             logger.info('Mail status changed. From %s to %s', mail, new_mail)
-            update_have_mail(mail)
+            update_have_mail(new_mail)
 
         mail = new_mail
