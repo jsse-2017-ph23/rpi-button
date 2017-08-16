@@ -16,6 +16,7 @@ def measure_distance() -> float:
     time.sleep(0.00001)
     GPIO.output(DIST_TRIG_PIN, False)
 
+    pulse_start = time.time()
     while GPIO.input(DIST_ECHO_PIN) == 0:
         # Set the variable to the time when echo pin is 1
         pulse_start = time.time()
