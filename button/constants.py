@@ -1,7 +1,7 @@
 import os
 
 # GPIO constants
-UPDATE_INTERVAL = 1
+UPDATE_INTERVAL = 5  # Time between each detect, in seconds
 DIST_TRIG_PIN = 23
 DIST_ECHO_PIN = 24
 DIST_THRESHOLD = 5  # If lower than this distance, mail exist. In cm
