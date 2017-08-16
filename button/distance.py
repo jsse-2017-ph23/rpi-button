@@ -25,6 +25,8 @@ def measure_distance() -> float:
         pulse_end = time.time()
 
     pulse_duration = pulse_end - pulse_start
+    logger.debug('Pulse duration: %s', pulse_duration)
+
     distance = pulse_duration * 17150
     s = round(distance, 2)
     logger.debug('Measured distance: %s', s)
