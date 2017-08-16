@@ -33,7 +33,7 @@ def measure_distance() -> float:
 
 def have_mail() -> bool:
     s = measure_distance()
-    return s <= DIST_THRESHOLD
+    return s >= DIST_THRESHOLD
 
 
 def loop_distance_sensor():
