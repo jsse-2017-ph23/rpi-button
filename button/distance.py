@@ -1,5 +1,6 @@
 import time
 import logging
+from math import floor
 
 from RPi import GPIO
 
@@ -28,14 +29,14 @@ def measure_distance() -> float:
     logger.debug('Pulse duration: %s', pulse_duration)
 
     distance = pulse_duration * 17150
-    s = round(distance, 2)
+    s = floor(distance)
     logger.debug('Measured distance: %s', s)
     return s
 
 
 def have_mail() -> bool:
     s = measure_distance()
-    return s > DIST_ERR_THRESHOLD or s >= DIST_THRESHOLD
+    return s > DIST_ERR_THRESHOLD or s <= DIST_THRESHOLD
 
 
 def loop_distance_sensor():
