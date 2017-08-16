@@ -25,7 +25,10 @@ def measure_distance() -> float:
         # Set the variable to the time when echo is 0
         pulse_end = time.time()
 
-    pulse_duration = pulse_end - pulse_start
+    try:
+        pulse_duration = pulse_end - pulse_start
+    except NameError:
+        return 0
     logger.debug('Pulse duration: %s', pulse_duration)
 
     distance = pulse_duration * 17150
