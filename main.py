@@ -39,9 +39,9 @@ def main():
     logger.info('Initialization completed. Entering loop')
     loop_distance_sensor()
 
+
 if __name__ == '__main__':
     try:
         main()
     finally:
         GPIO.cleanup()
-

@@ -1,5 +1,7 @@
 # rpi-button
-Detect mail existence in RPi and respond in firebase
+[![Travis](https://img.shields.io/travis/jsse-2017-ph23/rpi-button.svg?style=flat-square)](https://travis-ci.org/jsse-2017-ph23/rpi-button)
+
+Detect mail existence in RPi and respond in firebase 
 
 Because of laziness, the package name show button. But it in fact requires
 distance sensor to complete the task.
