@@ -44,4 +44,5 @@ if __name__ == '__main__':
     try:
         main()
     finally:
+        logger.info('Cleaning up GPIO setup')
         GPIO.cleanup()
